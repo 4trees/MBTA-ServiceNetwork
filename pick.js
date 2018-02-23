@@ -45,10 +45,11 @@ function updateShapes(time){
         const opacity = thisShape.arrivals.some(d => d <= time) ? .2 : 0
         thisShape.marker.setStyle({opacity:opacity})
     }
+    loader.classList.add('sr-only')
 }
 
 function drawAllShapes() {
-
+    // loader.querySelector('p').innerHTML = 'Preparing map'
     const tripList = allData.stopTimes_nestedBytrip.map(d => d.key)
     const validTrips = allData.trips.filter(d => tripList.includes(d.trip_id) && allData.routeIds.includes(d.route_id))
 

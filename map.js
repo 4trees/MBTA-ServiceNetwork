@@ -10,6 +10,7 @@ var shapePanes = map.createPane('shapes');
 shapePanes.style.zIndex = 410;
 shapePanes.style.pointerEvents = 'none';
 
+var loader = document.querySelector('#drawingLoader')
 
 var shapeMarkers = []
 function drawShape(shape) {

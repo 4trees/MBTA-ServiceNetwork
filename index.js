@@ -18,6 +18,7 @@ function unzip(blob) {
             console.log(entries)
             //get stop_times
             entries[9].getData(new zip.TextWriter(), function(stop_times) {
+                // loader.querySelector('p').innerHTML = 'Preparing GTFS file'
                 allData.stop_times = d3.csvParse(stop_times, parseStop_times)
                 allData.stopTimes_nestedBytrip = d3.nest()
                     .key(d => d.trip_id)
@@ -33,6 +34,7 @@ function unzip(blob) {
 
                 //get shapes
                 entries[8].getData(new zip.TextWriter(), function(shapes) {
+                    // loader.querySelector('p').innerHTML = 'Loading shapes file'
                     // allData.shapes = d3.csvParse(shapes)
                     allData.shapes = d3.nest()
                         .key(d => d.shape_id)
@@ -42,22 +44,26 @@ function unzip(blob) {
 
                     //get routes
                     entries[7].getData(new zip.TextWriter(), function(routes) {
+                        // loader.querySelector('p').innerHTML = 'Loading routes file'
                         allData.routes = d3.csvParse(routes, parseRoute)
                         allData.routeIds = allData.routes.map(d => d.route_id)
                         console.log('routes loaded')
 
                         //get stops
                         entries[10].getData(new zip.TextWriter(), function(stops) {
+                            // loader.querySelector('p').innerHTML = 'Loading stops file'
                             allData.stops = d3.csvParse(stops)
                             console.log('stops loaded')
 
                             //get trips
                             entries[12].getData(new zip.TextWriter(), function(trips) {
+                                // loader.querySelector('p').innerHTML = 'Loading trips file'
                                 allData.trips = d3.csvParse(trips, parseTrips)
                                 console.log('trips loaded')
 
                                 //get calendar
                                 entries[1].getData(new zip.TextWriter(), function(calendar) {
+                                    // loader.querySelector('p').innerHTML = 'Loading calendar file'
                                     allData.calendar = d3.csvParse(calendar)
                                     console.log('calendar loaded')
                                     console.log(allData)
