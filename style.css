@@ -1,0 +1,51 @@
+/* GLOBAL STYLE */
+
+html,
+body {
+    height: 100%;
+    font-family: Verdana, Geneva, sans-serif;
+    width:100%;
+    margin: 0;
+    padding: 0;
+}
+path{
+    transition: opacity 1s;
+}
+.container-fluid{
+    width:100%;
+    height: 100%;
+}
+
+/* MAP */
+
+#mapContainer {
+    height: 100%;
+    width:100%;
+    padding: 0;
+}
+
+#mapid {
+    height: 100%;
+}
+
+#sliderContainer{
+    position: absolute;
+    bottom:0;
+    z-index: 100000;
+    width:100%;
+}
+#slider{
+    padding:20px;
+    text-align: center;
+}
+#slider p{
+    font-size: 14px;
+}
+#slider input{
+    background: transparent !important;
+    border: none;
+}
+#serviceHour{
+    /*color:#f6931f;*/
+    font-weight: bold;
+}
