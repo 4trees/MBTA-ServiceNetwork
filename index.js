@@ -1,4 +1,5 @@
-zip.workerScriptsPath = "/lib/zip/";
+var baseUrl = window.location.pathname
+zip.workerScriptsPath = `..${baseUrl}lib/zip/`;
 
 const GTFSURL = 'https://www.mbta.com/uploadedfiles/MBTA_GTFS.zip'
 
