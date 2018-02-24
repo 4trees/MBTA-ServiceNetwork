@@ -16,9 +16,12 @@ function unzip(blob) {
         // get all entries from the zip
         reader.getEntries(function(entries) {
             console.log(entries)
+
             //get stop_times
-            entries[9].getData(new zip.TextWriter(), function(stop_times) {
-                // loader.querySelector('p').innerHTML = 'Preparing GTFS file'
+            const stop_timesFile = entries.find(entry => entry.filename == 'stop_times.txt')
+
+            stop_timesFile.getData(new zip.TextWriter(), function(stop_times) {
+
                 allData.stop_times = d3.csvParse(stop_times, parseStop_times)
                 allData.stopTimes_nestedBytrip = d3.nest()
                     .key(d => d.trip_id)
@@ -29,49 +32,70 @@ function unzip(blob) {
                         }
                     })
                     .entries(allData.stop_times);
-                    // console.log(allData.stopTimes_nestedBytrip)
+                // console.log(allData.stopTimes_nestedBytrip)
                 console.log('stop_times loaded')
 
                 //get shapes
-                entries[8].getData(new zip.TextWriter(), function(shapes) {
-                    // loader.querySelector('p').innerHTML = 'Loading shapes file'
-                    // allData.shapes = d3.csvParse(shapes)
+                const shapesFile = entries.find(entry => entry.filename == 'shapes.txt')
+                shapesFile.getData(new zip.TextWriter(), function(shapes) {
                     allData.shapes = d3.nest()
                         .key(d => d.shape_id)
-                        .rollup(d => d.map(e => [e.shape_pt_lat, e.shape_pt_lon]))
-                        .entries(d3.csvParse(shapes))
+                        .rollup(d => d.map(e => [e.lat, e.lon]))
+                        .entries(d3.csvParse(shapes, parseShape))
                     console.log('shapes loaded')
 
                     //get routes
-                    entries[7].getData(new zip.TextWriter(), function(routes) {
-                        // loader.querySelector('p').innerHTML = 'Loading routes file'
+                    const routesFile = entries.find(entry => entry.filename == 'routes.txt')
+                    routesFile.getData(new zip.TextWriter(), function(routes) {
+
                         allData.routes = d3.csvParse(routes, parseRoute)
                         allData.routeIds = allData.routes.map(d => d.route_id)
                         console.log('routes loaded')
 
                         //get stops
-                        entries[10].getData(new zip.TextWriter(), function(stops) {
-                            // loader.querySelector('p').innerHTML = 'Loading stops file'
+                        const stopsFile = entries.find(entry => entry.filename == 'stops.txt')
+                        stopsFile.getData(new zip.TextWriter(), function(stops) {
+
                             allData.stops = d3.csvParse(stops)
                             console.log('stops loaded')
 
                             //get trips
-                            entries[12].getData(new zip.TextWriter(), function(trips) {
-                                // loader.querySelector('p').innerHTML = 'Loading trips file'
+                            const tripsFile = entries.find(entry => entry.filename == 'trips.txt')
+                            tripsFile.getData(new zip.TextWriter(), function(trips) {
+
                                 allData.trips = d3.csvParse(trips, parseTrips)
                                 console.log('trips loaded')
 
                                 //get calendar
-                                entries[1].getData(new zip.TextWriter(), function(calendar) {
-                                    // loader.querySelector('p').innerHTML = 'Loading calendar file'
+                                const calendarFile = entries.find(entry => entry.filename == 'calendar.txt')
+                                calendarFile.getData(new zip.TextWriter(), function(calendar) {
+
                                     allData.calendar = d3.csvParse(calendar)
+                                    allData.service = {
+                                        monday: [],
+                                        tuesday: [],
+                                        wednesday: [],
+                                        thursday: [],
+                                        friday: [],
+                                        saturday: [],
+                                        sunday: []
+                                    }
+                                    allData.calendar.forEach(day => {
+                                        if (day.monday == '1') allData.service.monday.push(day.service_id)
+                                        if (day.tuesday == '1') allData.service.tuesday.push(day.service_id)
+                                        if (day.wednesday == '1') allData.service.wednesday.push(day.service_id)
+                                        if (day.thursday == '1') allData.service.thursday.push(day.service_id)
+                                        if (day.friday == '1') allData.service.friday.push(day.service_id)
+                                        if (day.saturday == '1') allData.service.saturday.push(day.service_id)
+                                        if (day.sunday == '1') allData.service.sunday.push(day.service_id)
+                                    })
                                     console.log('calendar loaded')
                                     console.log(allData)
                                     promise = Promise.resolve(allData)
                                     promise.then(function(value) {
-                                        // pick(value).time('06:00:00')()
-                                        // pick(value)()
+                                        
                                         drawAllShapes()
+                                        
                                     });
 
 
@@ -109,5 +133,6 @@ function unzip(blob) {
         });
     }, function(error) {
         // onerror callback
+        console.log(error)
     });
 }

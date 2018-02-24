@@ -37,3 +37,11 @@ function parseRoute(d){
         route_text_color:d.route_text_color
     }
 }
+
+function parseShape(d){
+    return {
+        shape_id: d.shape_id,
+        lat:d.shape_pt_lat,
+        lon:d.shape_pt_lon
+    }
+}

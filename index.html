@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css?ver=0.0.01" />
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://use.fontawesome.com/bb7d7deb27.js"></script>
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -16,31 +17,41 @@
 
 <body>
     <div class="container-fluid">
-        <div id="drawingLoader">
-            <div class="loader">
+        <div id="drawingLoader" class="row no-gutters">
+            <div class="loader col">
                 <br>
                 <p>Loading GTFS data</p>
+                <br>
             </div>
         </div>
-        <div id="mapContainer">
-            <div id="mapid"></div>
+        <div id="mapContainer" class="row no-gutters">
+            <div id="mapid" class="col"></div>
         </div>
-        <div id="sliderContainer">
-            <div id="slider">
-                <p>
-                    <label for="serviceHour">Service Hour 03:00 - </label>
-                    <input type="text" id="serviceHour" readonly>
-                </p>
-                <div id="slider-range-min"></div>
+        <div class="row no-gutters" id="filterContainer">
+            <div class="col" id="day-filters">
+                <p>Service Day</p>
+                <div class="row justify-content-center" id="days">
+                </div>
+            </div>
+            <div class="col-9">
+                <div id="slider">
+                    <p>
+                        <label for="serviceHour">Service Hour 03:00 - </label>
+                        <input type="text" id="serviceHour" readonly>
+                    </p>
+                    <div id="slider-range-min"></div>
+                </div>
             </div>
         </div>
     </div>
     <script src='./lib/d3.min.js'></script>
     <script type="text/javascript" src="lib/zip/zip.js"></script>
-    <script src='map.js'></script>
-    <script src='parse.js'></script>
-    <script src='pick.js'></script>
-    <script src='index.js'></script>
+    <script src='map.js?ver=0.0.01'></script>
+    <script src='parse.js?ver=0.0.01'></script>
+    <script src='pick.js?ver=0.0.01'></script>
+    <script src='filter.js?ver=0.0.01'></script>
+    <script src='index.js?ver=0.0.01'></script>
+
 </body>
 
 </html>
