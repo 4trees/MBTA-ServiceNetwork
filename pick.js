@@ -1,11 +1,10 @@
-function updateBytime(time) {
+function updateBytime(timeStr) {
     const dayService = getDays()
-    const timeValue = time * 3600
+    const timeValue = getSeconds(timeStr + ':00')
     updateShapes(timeValue, dayService)
 }
 
 function updateShapes(time, dayService) {
-    // console.log(dayService)
     const countShapes = shapeMarkers.length
     for (i = 0; i < countShapes; i++) {
         const thisShape = shapeMarkers[i]
@@ -21,7 +20,7 @@ function updateByDay() {
 
     const time = document.querySelector('#serviceHour').value
     const timeValue = getSeconds(time + ':00')
-    console.log(timeValue)
+
     updateShapes(timeValue, dayService)
 }
 

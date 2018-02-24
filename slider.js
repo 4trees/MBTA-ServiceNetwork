@@ -1,3 +1,12 @@
+function getHourStr(num){
+    let hour
+    const trunc = Math.trunc(num)
+    const deci = (num - trunc) == 0 ? '00' : '30'
+    return (trunc < 10 ? ('0' + trunc) : trunc) + ':' + deci
+
+}
+
+
 $(function() {
     $("#slider-range-min").slider({
         // orientation: "vertical",
@@ -5,12 +14,13 @@ $(function() {
         value: 06,
         min: 3,
         max: 28,
+        step:.5,
         slide: function(event, ui) {
-            $("#serviceHour").val(ui.value < 10 ? ('0' + ui.value + ':00') : (ui.value + ':00'));
-            // console.log(ui.value)
-            updateBytime(ui.value)
+            $("#serviceHour").val(getHourStr(ui.value));
+            updateBytime(getHourStr(ui.value))
         }
     });
     var data = $("#slider-range-min").slider("value")
-    $("#serviceHour").val(data < 10 ? ('0' + data + ':00') : (data + ':00'));
+    $("#serviceHour").val(getHourStr(data));
 });
+

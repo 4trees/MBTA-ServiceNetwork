@@ -30,7 +30,7 @@ function drawShape(shape) {
 
 function drawAllShapes() {
 	createDayFilter()
-	
+
     const tripList = allData.stopTimes_nestedBytrip.map(d => d.key)
     const validTrips = allData.trips.filter(d => tripList.includes(d.trip_id) && allData.routeIds.includes(d.route_id))
 
@@ -43,6 +43,6 @@ function drawAllShapes() {
     validShapes.forEach(shape => {
         drawShape(shape)
     })
-    updateBytime(6)
+    updateBytime('06:00')
     // console.log(shapeMarkers)
 }
