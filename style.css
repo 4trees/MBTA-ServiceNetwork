@@ -149,6 +149,9 @@ p {
     border:#C0CA33;
     background: rgba(255, 255, 255, 1);
 }
+#slider .ui-widget.ui-widget-content{
+    border-color:#343a40;
+}
 #serviceHour {
     color:#fff;
     font-weight: bold;
@@ -157,7 +160,7 @@ p {
     display: none;
 }
 #day-filters input[type="checkbox"]+label {
-    color: #ccc;
+    color: #343a40;
 }
 #day-filters input[type="checkbox"]:checked+label {
     color: #C0CA33;
