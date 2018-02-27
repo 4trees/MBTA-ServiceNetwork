@@ -7,6 +7,7 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
+    color:#fff;
 }
 
 path {
@@ -100,6 +101,22 @@ p {
     height: 100%;
 }
 
+.leaflet-tile-container img {
+    /*-webkit-filter: grayscale(1) brightness(.4);
+    filter: grayscale(1) brightness(.4);*/
+    -webkit-filter: brightness(.4);
+    filter: brightness(.4);
+}
+.leaflet-bar a{
+    background-color: #495057;
+    border-bottom: 1px solid #6c757d;
+    color:#dee2e6;
+}
+.leaflet-bar a:hover{
+    background-color: #6c757d;
+    color:#fff;
+}
+
 #filterContainer {
     position: absolute;
     bottom: 0;
@@ -122,9 +139,18 @@ p {
     font-size: 14px;
     width: 60px;
 }
-
+#slider .ui-widget-content{
+    background: rgba(0,0,0,.075);
+}
+#slider .ui-widget-header{
+    background: rgba(192, 202, 51, .7);
+}
+#slider .ui-state-active{
+    border:#C0CA33;
+    background: rgba(255, 255, 255, 1);
+}
 #serviceHour {
-    /*color:#f6931f;*/
+    color:#fff;
     font-weight: bold;
 }
 #day-filters input[type="checkbox"] {
@@ -134,5 +160,5 @@ p {
     color: #ccc;
 }
 #day-filters input[type="checkbox"]:checked+label {
-    color: #38c0df;
+    color: #C0CA33;
 }

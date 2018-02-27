@@ -50,6 +50,7 @@ function unzip(blob) {
 
                         allData.routes = d3.csvParse(routes, parseRoute)
                         allData.routeIds = allData.routes.map(d => d.route_id)
+                        allData.routeMap = d3.map(allData.routes, d => d.route_id)
                         console.log('routes loaded')
 
                         //get stops
@@ -70,7 +71,6 @@ function unzip(blob) {
                                 const calendarFile = entries.find(entry => entry.filename == 'calendar.txt')
                                 calendarFile.getData(new zip.TextWriter(), function(calendar) {
 
-                                    allData.calendar = d3.csvParse(calendar)
                                     allData.service = {
                                         monday: [],
                                         tuesday: [],
@@ -80,15 +80,8 @@ function unzip(blob) {
                                         saturday: [],
                                         sunday: []
                                     }
-                                    allData.calendar.forEach(day => {
-                                        if (day.monday == '1') allData.service.monday.push(day.service_id)
-                                        if (day.tuesday == '1') allData.service.tuesday.push(day.service_id)
-                                        if (day.wednesday == '1') allData.service.wednesday.push(day.service_id)
-                                        if (day.thursday == '1') allData.service.thursday.push(day.service_id)
-                                        if (day.friday == '1') allData.service.friday.push(day.service_id)
-                                        if (day.saturday == '1') allData.service.saturday.push(day.service_id)
-                                        if (day.sunday == '1') allData.service.sunday.push(day.service_id)
-                                    })
+                                    allData.calendar = d3.csvParse(calendar,parseCalendar)
+                                    
                                     console.log('calendar loaded')
                                     console.log(allData)
                                     promise = Promise.resolve(allData)
