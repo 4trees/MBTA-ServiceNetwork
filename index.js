@@ -2,8 +2,14 @@ var baseUrl = window.location.pathname
 zip.workerScriptsPath = `..${baseUrl}lib/zip/`;
 
 const GTFSURL = 'https://www.mbta.com/uploadedfiles/MBTA_GTFS.zip'
+const sentData = {
+    mode: 'cors',
+    header: new Headers({
+        'Access-Control-Allow-Origin': '*',
+    })
+}
 
-fetch(GTFSURL).then(function(response) {
+fetch(GTFSURL, sentData).then(function(response) {
     return response.blob();
 }).then(function(myBlob) {
     unzip(myBlob)
@@ -80,15 +86,15 @@ function unzip(blob) {
                                         saturday: [],
                                         sunday: []
                                     }
-                                    allData.calendar = d3.csvParse(calendar,parseCalendar)
-                                    
+                                    allData.calendar = d3.csvParse(calendar, parseCalendar)
+
                                     console.log('calendar loaded')
                                     console.log(allData)
                                     promise = Promise.resolve(allData)
                                     promise.then(function(value) {
-                                        
+
                                         drawAllShapes()
-                                        
+
                                     });
 
 
