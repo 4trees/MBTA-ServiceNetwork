@@ -2,14 +2,13 @@ var baseUrl = window.location.pathname
 zip.workerScriptsPath = `..${baseUrl}lib/zip/`;
 
 const GTFSURL = 'https://www.mbta.com/uploadedfiles/MBTA_GTFS.zip'
-const sentData = {
-    mode: 'cors',
+const request = new Request(GTFSURL,{
     header: new Headers({
         'Access-Control-Allow-Origin': '*',
     })
-}
+})
 
-fetch(GTFSURL, sentData).then(function(response) {
+fetch(request).then(function(response) {
     return response.blob();
 }).then(function(myBlob) {
     unzip(myBlob)
