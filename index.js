@@ -1,14 +1,16 @@
+//change zip to api.mbtace.com real-time api
+//promise
+//factory function
+//canvas
+
 var baseUrl = window.location.pathname
 zip.workerScriptsPath = `..${baseUrl}lib/zip/`;
 
 const GTFSURL = 'https://www.mbta.com/uploadedfiles/MBTA_GTFS.zip'
-const request = new Request(GTFSURL,{
-    header: new Headers({
-        'Access-Control-Allow-Origin': '*',
-    })
-})
+//cdn.mbtace.com/MBTA_GTFS.zip
 
-fetch(request).then(function(response) {
+
+fetch(GTFSURL).then(function(response) {
     return response.blob();
 }).then(function(myBlob) {
     unzip(myBlob)
