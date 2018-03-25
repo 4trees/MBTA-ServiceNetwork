@@ -5,12 +5,12 @@
 
 const gtfs = window.location.href + "gtfs/"
 const [stop_times, trips, calendar, routes, shapes, stops] = [
-    "stop_times.txt",
-    "trips.txt",
-    "calendar.txt",
-    "routes.txt",
-    "shapes.txt",
-    "stops.txt"
+    gtfs + "stop_times.txt",
+    gtfs + "trips.txt",
+    gtfs + "calendar.txt",
+    gtfs + "routes.txt",
+    gtfs + "shapes.txt",
+    gtfs + "stops.txt"
 ]
 
 fetchCsv = (url, parse) => {
@@ -28,11 +28,11 @@ fetchCsv = (url, parse) => {
 }
 var allData = {}
 Promise.all([
-    fetchCsv(gtfs + stop_times, parseStop_times),
-    fetchCsv(gtfs + trips, parseTrips),
-    fetchCsv(gtfs + routes, parseRoute),
-    fetchCsv(gtfs + shapes, parseShape),
-    fetchCsv(gtfs + stops, parseStop),
+    fetchCsv(stop_times, parseStop_times),
+    fetchCsv(trips, parseTrips),
+    fetchCsv(routes, parseRoute),
+    fetchCsv(shapes, parseShape),
+    fetchCsv(stops, parseStop),
 
 ]).then(([stopTimesData, tripData, routeData, shapeData, stopData]) => {
 
