@@ -1,0 +1,2 @@
+"feed_publisher_name","feed_publisher_url","feed_contact_url","feed_contact_email","feed_lang","feed_start_date","feed_end_date","feed_version"
+"MBTA","https://www.mbta.com","https://www.mbta.com/developers","developer@mbta.com","EN",20180118,20180331,"Winter 2018 version 6D, 1/25/18"

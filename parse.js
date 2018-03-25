@@ -1,4 +1,3 @@
-var promise, allData = {}
 
 function getSeconds(str) {
     const strings = str.split(':')
@@ -45,7 +44,9 @@ function parseShape(d) {
         lon: d.shape_pt_lon
     }
 }
-
+function parseStop(d) {
+    return d
+}
 function parseCalendar(d) {
     if (d.monday == '1') allData.service.monday.push(d.service_id)
     if (d.tuesday == '1') allData.service.tuesday.push(d.service_id)
