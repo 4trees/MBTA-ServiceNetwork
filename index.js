@@ -3,14 +3,14 @@
 //factory function
 //canvas
 
-
-const [stop_times, trips, calendar, routes, shapes, stops] = [
-    "../gtfs/stop_times.txt",
-    "../gtfs/trips.txt",
-    "../gtfs/calendar.txt",
-    "../gtfs/routes.txt",
-    "../gtfs/shapes.txt",
-    "../gtfs/stops.txt"
+const path = window.location.href + 'gtfs/'
+var [stop_times, trips, calendar, routes, shapes, stops] = [
+    path + "stop_times.txt",
+    path + "trips.txt",
+    path + "calendar.txt",
+    path + "routes.txt",
+    path + "shapes.txt",
+    path + "stops.txt"
 ]
 
 fetchCsv = (url, parse) => {
