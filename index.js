@@ -5,15 +5,16 @@
 
 
 const [stop_times, trips, calendar, routes, shapes, stops] = [
-    `./gtfs/stop_times.txt`,
-    `./gtfs/trips.txt`,
-    `./gtfs/calendar.txt`,
-    `./gtfs/routes.txt`,
-    `./gtfs/shapes.txt`,
-    `./gtfs/stops.txt`
+    "./gtfs/stop_times.txt",
+    "./gtfs/trips.txt",
+    "./gtfs/calendar.txt",
+    "./gtfs/routes.txt",
+    "./gtfs/shapes.txt",
+    "./gtfs/stops.txt"
 ]
 
 fetchCsv = (url, parse) => {
+    console.log(url)
     return new Promise((resolve, reject) => {
         d3.csv(url, parse, (err, data) => {
 
