@@ -14,10 +14,10 @@ var [stop_times, trips, calendar, routes, shapes, stops] = [
 ]
 
 fetchCsv = (url, parse) => {
-    console.log(url)
+    // console.log(url)
     return new Promise((resolve, reject) => {
         d3.csv(url, parse, (err, data) => {
-
+            // console.log(url)
             if (err) {
                 reject(err)
             } else {
