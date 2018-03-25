@@ -3,7 +3,7 @@
 //factory function
 //canvas
 
-const gtfs = window.location.href + "/gtfs/"
+const gtfs = window.location.href + "gtfs/"
 const [stop_times, trips, calendar, routes, shapes, stops] = [
     "stop_times.txt",
     "trips.txt",
