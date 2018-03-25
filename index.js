@@ -68,7 +68,7 @@ Promise.all([
 
     return allData
 }).then(data => {
-    fetchCsv(gtfs + calendar, parseCalendar).then(calendarData => {
+    fetchCsv(calendar, parseCalendar).then(calendarData => {
 
         allData.calendar = calendarData
 
