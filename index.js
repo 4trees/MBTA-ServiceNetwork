@@ -3,7 +3,7 @@
 //factory function
 //canvas
 
-const gtfs = "gtfs/"
+const gtfs = "./gtfs/"
 const [stop_times, trips, calendar, routes, shapes, stops] = [
     `${gtfs}stop_times.txt`,
     `${gtfs}trips.txt`,
