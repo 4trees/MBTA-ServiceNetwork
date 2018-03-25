@@ -2,7 +2,8 @@
 //promise
 //factory function
 //canvas
-const gtfs = "/MBTA_GTFS/"
+
+const gtfs = window.location.href + "/MBTA_GTFS/"
 const [stop_times, trips, calendar, routes, shapes, stops] = [
     "stop_times.txt",
     "trips.txt",
