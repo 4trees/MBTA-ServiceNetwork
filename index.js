@@ -1,5 +1,5 @@
 let allData;
-const dataURL = '/gtfs/alldata.json'
+const dataURL = 'gtfs/alldata.json'
 
 fetchData = (url) => {
     // console.log(url)
