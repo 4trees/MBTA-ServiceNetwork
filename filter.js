@@ -3,7 +3,7 @@ function createDayFilter(){
 	.map(day => {
     return `
         <div class="col-1" title="${day.toLocaleUpperCase()}">
-        <input type="checkbox" name="day-filter" id='${day}' onclick="updateByDay()" readonly checked><label for="${day}"><i class="fa fa-circle" aria-hidden="true"></i></label>
+        <input type="checkbox" name="day-filter" id='${day}' onclick="updateByDay()" readonly checked><label for="${day}">${day.substr(0,1).toUpperCase()}</label>
         </div>`
 	}).join('')
 }

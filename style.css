@@ -23,7 +23,14 @@ p {
     height: 100%;
 }
 
-
+.title{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1em;
+    opacity: 0.6;
+}
 
 /* LOADER */
 
@@ -42,7 +49,7 @@ p {
     text-align: center;
     position: absolute;
     top: 50%;
-    left: 55%;
+    left: 50%;
     transform: translate(-50%, -50%);
     font-family: helvetica, arial, sans-serif;
     font-weight: 900;
@@ -50,7 +57,7 @@ p {
     /*    letter-spacing: 0.2em;*/
 }
 
-.loader::before,
+/*.loader::before,
 .loader::after {
     content: "";
     display: block;
@@ -59,7 +66,7 @@ p {
     background: #C0CA33;
     position: absolute;
     animation: load .7s infinite alternate ease-in-out;
-}
+}*/
 
 .loader::before {
     top: 0;
@@ -161,6 +168,8 @@ p {
 }
 #day-filters input[type="checkbox"]+label {
     color: #343a40;
+    font-weight: bold;
+    cursor: pointer;
 }
 #day-filters input[type="checkbox"]:checked+label {
     color: #C0CA33;
