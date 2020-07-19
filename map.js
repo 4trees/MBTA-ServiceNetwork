@@ -40,15 +40,16 @@ function drawShape(shape) {
 function drawAllShapes() {
 	createDayFilter()
 
-    const tripList = allData.stopTimes_nestedBytrip.map(d => d.key)
-    const validTrips = allData.trips.filter(d => tripList.includes(d.trip_id) && allData.routeIds.includes(d.route_id))
+    // const tripList = allData.stopTimes_nestedBytrip.map(d => d.key)
+    // const validTrips = allData.trips.filter(d => tripList.includes(d.trip_id) && allData.routeIds.includes(d.route_id))
 
-    const validShapes = d3.nest()
-        .key(d => d.shape_id)
-        .entries(validTrips);
+    // const validShapes = d3.nest()
+    //     .key(d => d.shape_id)
+    //     .entries(validTrips);
     // console.log(validTrips, validShapes)
-
-    validShapes.forEach(shape => {
+    allData.validShapes
+    // validShapes
+    .forEach(shape => {
         drawShape(shape)
     })
     updateBytime('06:00')
